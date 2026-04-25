@@ -1,0 +1,174 @@
+.miner-bg {
+    background: radial-gradient(circle at center, #1e293b 0%, #020617 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Elements ko spread karne ke liye */
+    padding: 40px 20px;
+    color: #f8fafc;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Glass Header */
+.top-nav {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Main Monitoring Area (No bulky box) */
+.monitor-area {
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.label-text {
+    color: #94a3b8;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: -10px;
+}
+
+.gas-display {
+    font-size: 10rem; /* Bold & Clean */
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    transition: color 0.5s ease;
+}
+
+.ppm-tag {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #64748b;
+}
+
+/* Status Bar Refined */
+.status-indicator-wrap {
+    width: 300px;
+    margin: 20px auto;
+}
+
+.indicator-line {
+    height: 4px;
+    width: 100%;
+    background: #1e293b;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.indicator-progress {
+    height: 100%;
+    transition: width 0.5s ease, background 0.5s ease;
+}
+
+/* Emergency Section */
+.action-area {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.emergency-btn-new {
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    border: 2px solid #ef4444;
+    background: transparent;
+    color: #ef4444;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.emergency-btn-new:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.emergency-btn-new.holding {
+    color: white;
+    border-color: white;
+}
+
+.hold-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #ef4444;
+    z-index: -1;
+    transition: width 0.1s linear;
+}
+
+/* Status Glows (Text only) */
+.text-glow-success { text-shadow: 0 0 30px rgba(16, 185, 129, 0.4); color: #10b981; }
+.text-glow-warning { text-shadow: 0 0 30px rgba(245, 158, 11, 0.4); color: #f59e0b; }
+.text-glow-danger { text-shadow: 0 0 40px rgba(239, 68, 68, 0.6); color: #ef4444; animation: blinker 1s linear infinite; }
+
+@keyframes blinker { 50% { opacity: 0.7; } }
+
+.vitals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.vital-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vital-label {
+    font-size: 10px;
+    color: #888;
+    font-weight: bold;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.vital-value {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.main-display-box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.active-alarm {
+    background: #ff0000 !important;
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}

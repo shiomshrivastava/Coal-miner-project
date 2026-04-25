@@ -1,0 +1,83 @@
+/* Dashboard Container */
+.admin-bg {
+    background: #0f172a;
+    min-height: 100vh;
+    color: #f8fafc;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Stats Cards Section */
+.stats-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+.stats-card:hover { transform: translateY(-5px); }
+.stats-value { font-size: 2rem; font-weight: 800; display: block; }
+.stats-label { color: #94a3b8; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Sensor Grid Cards */
+.sensor-card {
+    background: #1e293b;
+    border-radius: 15px;
+    border-left: 5px solid #334155;
+    padding: 15px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+/* Alert Section Styling */
+.alert-panel {
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 15px;
+    padding: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+.resolve-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 0.8rem;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.resolve-btn:hover { background: #10b981; border-color: #10b981; }
+
+/* System Status Bar */
+.status-bar {
+    background: #020617;
+    padding: 8px 20px;
+    border-top: 1px solid #1e293b;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* History Table */
+.custom-table {
+    color: #e2e8f0;
+    width: 100%;
+}
+.custom-table th { color: #94a3b8; border-bottom: 1px solid #334155; padding: 12px; }
+.custom-table td { padding: 12px; border-bottom: 1px solid #1e293b; }
+
+@keyframes dangerBlink {
+    0%, 100% { background-color: rgba(220, 38, 38, 0.9); box-shadow: 0 0 10px rgba(220, 38, 38, 0.5); }
+    50% { background-color: rgba(220, 38, 38, 0.4); box-shadow: none; }
+}
+.danger-alert-blink { animation: dangerBlink 1.5s infinite; }
