@@ -9,6 +9,7 @@ function AdminDashboard() {
   const previousAlertsRef = useRef([]);
   const dangerAudioRef = useRef(null);
   const dangerSoundUrlRef = useRef("");
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   // --- Utility Functions (Sound, Status, etc.) ---
   const createDangerBeep = () => {
@@ -62,7 +63,7 @@ function AdminDashboard() {
   // --- API Handlers ---
   const fetchData = () => {
     // API Route updated to match the Blueprint in backend (/sensor/data)
-    axios.get("http://localhost:5000/sensor/data").then((res) => {
+    axios.get(`${API_BASE_URL}/sensor/data`).then((res) => {
       // Backend history bhejta he, hume har miner ka sirf LATEST data chahiye Admin screen par
       const historyData = res.data || [];
       const latestPerMiner = [];
@@ -82,7 +83,7 @@ function AdminDashboard() {
 
   const fetchAlerts = () => {
     // Alert fetching logic (Make sure your backend has this route, or it will just return empty for now)
-    axios.get("http://localhost:5000/alerts").then((res) => {
+    axios.get(`${API_BASE_URL}/alerts`).then((res) => {
       // Property mapping updated to match new DB schema (alert_type instead of type)
       const active = (res.data || []).filter(a => 
         String(a.alert_type).toLowerCase().includes("danger") || 
@@ -98,7 +99,7 @@ function AdminDashboard() {
 
   const handleResolve = async (id) => {
     try {
-      // await axios.post("http://localhost:5000/resolve-alert", { id });
+      // await axios.post(`${API_BASE_URL}/resolve-alert`, { id });
       setAlerts(prev => prev.filter(alert => (alert.id ?? alert.miner_id) !== id));
       alert(`Alert for Miner #${id} Resolved!`);
     } catch (e) { console.log(e); }

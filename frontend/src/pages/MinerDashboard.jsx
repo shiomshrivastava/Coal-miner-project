@@ -11,7 +11,7 @@ function MinerDashboard() {
   const progressIntervalRef = useRef(null);
   
   // URL ko naye backend routing ke hisab se set kiya he
-  const API_BASE_URL = "http://localhost:5000/sensor"; 
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
   const minerId = 1;
 
   // Gas status logic (Updated for MQ135 values and NaN fixes)
@@ -24,7 +24,7 @@ function MinerDashboard() {
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get(`${API_BASE_URL}/live-status`).then((res) => {
+      axios.get(`${API_BASE_URL}/sensor/live-status`).then((res) => {
         if (res.status !== 204 && res.data && Object.keys(res.data).length > 0) {
           setCurrentData(res.data);
         }
@@ -56,7 +56,7 @@ function MinerDashboard() {
   const sendEmergencySignal = () => {
     setIsSendingEmergency(true);
     // Backend ke emergency route par alert bhejo
-    axios.post("http://localhost:5000/emergency", { miner_id: minerId })
+    axios.post(`${API_BASE_URL}/emergency`, { miner_id: minerId })
       .then(() => alert("SOS ALERT SENT TO ADMINISTRATION"))
       .finally(() => { setIsSendingEmergency(false); clearEmergencyHold(); });
   };

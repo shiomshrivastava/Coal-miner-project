@@ -9,10 +9,11 @@ function InvestigatorDashboard() {
   const [statusFilter, setStatusFilter] = useState("ALL");
   const [minerFilter, setMinerFilter] = useState("ALL");
   const [loading, setLoading] = useState(true);
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchData = () => {
-      axios.get("http://localhost:5000/sensor/data")
+      axios.get(`${API_BASE_URL}/sensor/data`)
         .then((res) => {
           setData(res.data || []);
           setFilteredData(res.data || []);
