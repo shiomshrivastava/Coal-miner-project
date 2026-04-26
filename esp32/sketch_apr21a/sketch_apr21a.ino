@@ -18,11 +18,11 @@ DHT dht(DHTPIN, DHTTYPE);
 // ==========================================
 // 2. NETWORK & SERVER SETTINGS
 // ==========================================
-const char* ssid     = "Ritesh0_5GHz";   
-const char* password = "riteshkumar.4946";        
+const char* ssid     = "Airtel_S_home5G";   
+const char* password = "shiom.4946";         
 
-// Updated URL with /sensor prefix to match your Blueprint
-const char* serverUrl = "http://192.168.1.20:5000/sensor/sensor-data"; 
+// ✅ UPDATED: EC2 Public IP
+const char* serverUrl = "http://54.172.155.94:5000/sensor/sensor-data"; 
 
 // --- GLOBAL VARIABLES ---
 unsigned long lastSensorRead = 0;
@@ -101,7 +101,7 @@ void loop() {
       http.addHeader("Content-Type", "application/json");
 
       StaticJsonDocument<512> doc;
-      doc["device_id"] = "1"; // FIXED: Key changed to device_id
+      doc["device_id"] = "1";
       doc["temp"] = currentTemp;
       doc["humidity"] = currentHum;
       doc["bpm"] = demoBPM;
