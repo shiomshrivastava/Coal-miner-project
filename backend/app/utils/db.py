@@ -1,10 +1,10 @@
 import psycopg2
-import os
 
 def get_db_connection():
     return psycopg2.connect(
-        host="localhost",
-        database="iot_db",
+        host="db.exydcpiaxeaxvwzsvntz.supabase.co",
+        database="postgres",
         user="postgres",
-        password="root"
+        password="Shiom_Trisha@4946",
+        port="5432"
     )
