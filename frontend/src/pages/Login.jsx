@@ -22,7 +22,20 @@ function Login() {
       else if (role === "miner") window.location.href = "/miner";
       else if (role === "investigator") window.location.href = "/investigator";
     } catch (err) {
-      alert("Invalid Credentials!");
+      const status = err?.response?.status;
+      const backendMsg = err?.response?.data?.error;
+      const mixedContentLikely =
+        window.location.protocol === "https:" &&
+        typeof API_BASE_URL === "string" &&
+        API_BASE_URL.startsWith("http://");
+
+      if (status === 401) {
+        alert(backendMsg || "Invalid Credentials!");
+      } else if (mixedContentLikely || err?.code === "ERR_NETWORK") {
+        alert("Login blocked: HTTPS frontend cannot call HTTP backend. Use HTTPS backend URL or proxy via Vercel.");
+      } else {
+        alert(backendMsg || "Login failed due to server/network issue.");
+      }
     } finally {
       setLoading(false);
     }
