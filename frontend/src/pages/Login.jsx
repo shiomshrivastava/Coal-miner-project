@@ -6,7 +6,10 @@ function Login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  const API_BASE_URL =
+    window.location.protocol === "https:"
+      ? "/api"
+      : import.meta.env.VITE_API_URL;
 
   const handleLogin = async (e) => {
     e.preventDefault();

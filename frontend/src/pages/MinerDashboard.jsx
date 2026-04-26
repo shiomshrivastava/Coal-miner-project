@@ -11,7 +11,10 @@ function MinerDashboard() {
   const progressIntervalRef = useRef(null);
   
   // URL ko naye backend routing ke hisab se set kiya he
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  const API_BASE_URL =
+    window.location.protocol === "https:"
+      ? "/api"
+      : import.meta.env.VITE_API_URL;
   const minerId = 1;
 
   // Gas status logic (Updated for MQ135 values and NaN fixes)

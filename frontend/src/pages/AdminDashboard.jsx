@@ -9,7 +9,10 @@ function AdminDashboard() {
   const previousAlertsRef = useRef([]);
   const dangerAudioRef = useRef(null);
   const dangerSoundUrlRef = useRef("");
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  const API_BASE_URL =
+    window.location.protocol === "https:"
+      ? "/api"
+      : import.meta.env.VITE_API_URL;
 
   // --- Utility Functions (Sound, Status, etc.) ---
   const createDangerBeep = () => {

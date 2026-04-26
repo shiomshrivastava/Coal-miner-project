@@ -9,7 +9,10 @@ function InvestigatorDashboard() {
   const [statusFilter, setStatusFilter] = useState("ALL");
   const [minerFilter, setMinerFilter] = useState("ALL");
   const [loading, setLoading] = useState(true);
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  const API_BASE_URL =
+    window.location.protocol === "https:"
+      ? "/api"
+      : import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     const fetchData = () => {
